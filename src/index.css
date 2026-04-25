@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #f5f1ed 0%, #faf7f2 100%);
+  border-bottom: 2px solid #e8e4df;
+  padding: 1.5rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.navbar__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 3rem;
+}
+
+.navbar__item {
+  margin: 0;
+  position: relative;
+}
+
+.navbar__item a {
+  text-decoration: none;
+  color: #5a5350;
+  font-weight: 600;
+  font-size: 1rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  display: block;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.navbar__item a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5a5350, #3d3a38);
+  transition: width 0.3s ease;
+}
+
+.navbar__item a:hover {
+  color: #3d3a38;
+  transform: translateY(-2px);
+}
+
+.navbar__item a:hover::after {
+  width: 100%;
+}
+
+.navbar__item a.active {
+  color: #3d3a38;
+  font-weight: 700;
+}
+
+.navbar__item a.active::after {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #5a5350, #3d3a38);
+}
+
+#root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fdfbf8 0%, #faf7f2 100%);
+  color: #5a5350;
+}
