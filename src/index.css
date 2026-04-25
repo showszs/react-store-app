@@ -100,3 +100,37 @@ body {
   background: linear-gradient(180deg, #fdfbf8 0%, #faf7f2 100%);
   color: #5a5350;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e8e4df;
+  border-top: 3px solid #5a5350;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  color: #d4756d;
+  padding: 1rem;
+  background-color: #f5ebe8;
+  border-left: 4px solid #d4756d;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
