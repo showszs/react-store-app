@@ -1,10 +1,13 @@
 import Loading from '../components/Loading';
 import { useFetch } from '../hooks/useFetch';
 import type { ProductInterface } from '../types/Product.interface';
+import { generateMockProducts } from '../utils/mockapi';
 import './Products.css';
 
+
+
 const Products = () => {
-  const { data: products, error, isLoading } = useFetch<ProductInterface>('https://fakestoreapi.com/products', 4);
+  const { data: products, error, isLoading } = useFetch<ProductInterface>(generateMockProducts(1, 8));
 
   return (
     <div>

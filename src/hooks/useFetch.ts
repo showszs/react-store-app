@@ -14,7 +14,7 @@ export const useFetch = <T>(url: string, limit?: number) => {
       try {
         await new Promise((resolve) => setTimeout(resolve, 300));
 
-        const response = await axios.get<T[]>(limit ? `${url}?_limit=${limit}` : url, {
+        const response = await axios.get<T[]>(limit ? `${url}?limit=${limit}` : url, {
           signal: controller.signal,
         });
 
