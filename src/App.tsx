@@ -1,9 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
 import Posts from './pages/Posts';
+import Products from './pages/Products';
 import Users from './pages/Users';
 import Todos from './pages/Todos';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -11,11 +12,12 @@ const App = () => {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Products />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/users" element={<Users />} />
           <Route path="/todos" element={<Todos />} />
-          <Route path="*" element={<h1>404 Not Found</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>
