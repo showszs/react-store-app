@@ -1,4 +1,4 @@
-import Loading from '../components/Loading';
+import Loading from '../components/ui/Loading';
 import { useFetch } from '../hooks/useFetch';
 import type { UserInterface } from '../types/User.interface';
 
