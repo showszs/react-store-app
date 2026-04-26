@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Posts from './pages/Posts';
 import Users from './pages/Users';
+import Todos from './pages/Todos';
 
 const App = () => {
   return (
@@ -13,6 +14,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/todos" element={<Todos />} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
       </div>
     </BrowserRouter>
