@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 import type { TodoInterface } from '../types/Todo.interface';
 
 const Todos = () => {
-  const { data: todos, error, isLoading } = useFetch<TodoInterface>('https://jsonplaceholder.typicode.com/todos');
+  const { data: todos, error, isLoading } = useFetch<TodoInterface>('https://jsonplaceholder.typicode.com/todos', 10);
 
   return (
     <div>

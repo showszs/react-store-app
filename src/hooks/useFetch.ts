@@ -1,32 +1,46 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const useFetch = <T>(url: string) => {
+export const useFetch = <T>(url: string, limit?: number) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-        const response = await axios.get<T[]>(url);
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
+        const response = await axios.get<T[]>(limit ? `${url}?_limit=${limit}` : url, {
+          signal: controller.signal,
+        });
 
         if (response.status !== 200) {
-          throw new Error(`Error: Request failed with status code: ${response.status}`);
+          throw new Error(`Status code: ${response.status}`);
         }
-
-        setData(response.data as T[]);
+        setData(response.data);
       } catch (error) {
-        setError(`Error fetching data: ${(error as Error).message}`);
+        if (axios.isCancel(error)) {
+          console.log('Request canceled:', error.message);
+        } else {
+          setError(`Error fetching data: ${(error as Error).message}`);
+        }
       } finally {
-        setIsLoading(false);
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchData();
-  }, [url]);
+
+    return () => {
+      controller.abort();
+    };
+  }, [url, limit]);
 
   return { data, error, isLoading };
 };

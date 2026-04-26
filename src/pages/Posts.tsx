@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 import type { PostInterface } from '../types/Post.interface';
 
 const Posts = () => {
-  const { data: posts, error, isLoading } = useFetch<PostInterface>('https://jsonplaceholder.typicode.com/posts');
+  const { data: posts, error, isLoading } = useFetch<PostInterface>('https://jsonplaceholder.typicode.com/posts', 4);
 
   return (
     <div>

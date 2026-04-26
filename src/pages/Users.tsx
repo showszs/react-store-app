@@ -3,7 +3,7 @@ import { useFetch } from '../hooks/useFetch';
 import type { UserInterface } from '../types/User.interface';
 
 const Users = () => {
-  const { data: users, error, isLoading } = useFetch<UserInterface>('https://jsonplaceholder.typicode.com/users');
+  const { data: users, error, isLoading } = useFetch<UserInterface>('https://jsonplaceholder.typicode.com/users', 5);
 
   return (
     <div>
