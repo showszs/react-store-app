@@ -1,0 +1,162 @@
+.sign-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.sign-form__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3d3a38;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.sign-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sign-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sign-form__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5a5350;
+  text-transform: capitalize;
+}
+
+.sign-form__input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #e8e4df;
+  border-radius: 8px;
+  background-color: #fdfbf8;
+  color: #3d3a38;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  outline: none;
+}
+
+.sign-form__input:focus {
+  border-color: #5a5350;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(90, 83, 80, 0.1);
+  transform: translateY(-2px);
+}
+
+.sign-form__input::placeholder {
+  color: #a89e99;
+}
+
+.sign-form__error {
+  font-size: 0.85rem;
+  color: #d4756d;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+.sign-form__message {
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+.sign-form__message--success {
+  background-color: #f0f5f0;
+  color: #5a7a5a;
+  border-left: 4px solid #7a9e7a;
+}
+
+.sign-form__message--error {
+  background-color: #f5ebe8;
+  color: #8b5350;
+  border-left: 4px solid #d4756d;
+}
+
+.sign-form__button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #5a5350 0%, #3d3a38 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.2);
+}
+
+.sign-form__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(90, 83, 80, 0.3);
+}
+
+.sign-form__button:active {
+  transform: translateY(0);
+}
+
+.sign-form__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 6px rgba(90, 83, 80, 0.1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .sign-form {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .sign-form__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sign-form__form {
+    gap: 1rem;
+  }
+
+  .sign-form__button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}

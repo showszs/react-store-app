@@ -17,6 +17,9 @@ const Navbar = () => {
           <li className="navbar__item">
             <NavLink to="/todos">Todos</NavLink>
           </li>
+          <li className="navbar__item navbar__item--right">
+            <NavLink to="/sign">Sign In</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

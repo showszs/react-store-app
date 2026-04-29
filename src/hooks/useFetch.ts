@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const useFetch = <T>(url: string, limit?: number) => {
+export const useFetch = <T>(url: string, limit?: number, reload?: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export const useFetch = <T>(url: string, limit?: number) => {
     return () => {
       controller.abort();
     };
-  }, [url, limit]);
+  }, [url, limit, reload]);
 
   return { data, error, isLoading };
 };

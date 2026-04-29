@@ -27,6 +27,10 @@ body {
   animation: slideDown 0.5s ease-out;
 }
 
+.navbar .container {
+  display: flex;
+}
+
 @keyframes slideDown {
   from {
     transform: translateY(-20px);
@@ -44,11 +48,16 @@ body {
   margin: 0;
   display: flex;
   gap: 3rem;
+  width: 100%;
 }
 
 .navbar__item {
   margin: 0;
   position: relative;
+}
+
+.navbar__item--right {
+  margin-left: auto;
 }
 
 .navbar__item a {

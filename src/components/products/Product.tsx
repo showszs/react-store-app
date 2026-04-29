@@ -1,11 +1,25 @@
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import type { ProductInterface } from '../../types/Product.interface';
+import axios from 'axios';
+import { API_URL } from '../../utils/mockapi';
 
 interface ProductProps {
     product: ProductInterface;
+    reload: () => void;
 }
 
-const Product = ({ product: { name, image, category, description, price } }: ProductProps) => {
+const Product = ({ product: { name, image, category, description, price, id }, reload }: ProductProps) => {
+
+    const handleDeleteProduct = async () => {
+        try {
+            const response = await axios.delete(`${API_URL}/${id}`);
+            console.log('Product deleted:', response.data);
+            reload();
+        } catch (error) {
+            console.error('Error deleting product:', error);
+        }
+    }
+
     return (
         <li className="product-card">
             <div className="product-image">
@@ -20,7 +34,7 @@ const Product = ({ product: { name, image, category, description, price } }: Pro
                 </div>
             </div>
             <div className="product-actions">
-                <button className="product-item__delete">
+                <button className="product-item__delete" onClick={handleDeleteProduct}>
                     <FaTrash />
                 </button>
                 <button className="product-item__edit">
@@ -29,5 +43,5 @@ const Product = ({ product: { name, image, category, description, price } }: Pro
             </div>
         </li>
     )
-}
+};
 export default Product

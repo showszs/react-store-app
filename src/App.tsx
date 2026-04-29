@@ -4,6 +4,7 @@ import Posts from './pages/Posts';
 import Products from './pages/Products';
 import Users from './pages/Users';
 import Todos from './pages/Todos';
+import SignForm from './pages/SignForm';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/users" element={<Users />} />
           <Route path="/todos" element={<Todos />} />
+          <Route path="/sign" element={<SignForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

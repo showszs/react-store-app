@@ -10,7 +10,8 @@ import Product from '../components/products/Product';
 
 const Products = () => {
   const [page, setPage] = useState(1);
-  const { data: products, error, isLoading } = useFetch<ProductInterface>(generateMockProducts(page));
+  const [reload, setReload] = useState('0');
+  const { data: products, error, isLoading } = useFetch<ProductInterface>(generateMockProducts(page), undefined, reload);
 
   return (
     <div>
@@ -27,7 +28,7 @@ const Products = () => {
 
         <ul className="products-list">
           {!!products.length && products.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product key={product.id} product={product} reload={() => setReload(product.id)} />
           ))}
         </ul>
       </div>
