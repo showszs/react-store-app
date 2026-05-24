@@ -160,3 +160,21 @@
     font-size: 0.95rem;
   }
 }
+
+.sign-form__message--success {
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

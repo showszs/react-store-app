@@ -6,8 +6,8 @@ import axios from 'axios';
 import './SignForm.css';
 
 interface SignFormValues {
-    login: '';
-    password: '';
+    login: string;
+    password: string;
 }
 
 const validationSchema = object({
@@ -27,7 +27,7 @@ const SignForm = () => {
 
     const handleSubmit = async (
         values: SignFormValues,
-        { setSubmitting, resetForm }: FormikHelpers<SignFormValues>
+        { resetForm }: FormikHelpers<SignFormValues>
     ) => {
 
         setError(null);
@@ -36,13 +36,16 @@ const SignForm = () => {
         try {
             await axios.post("https://67a9037f6e9548e44fc2acf8.mockapi.io/products", values);
             setSuccess(true);
+
+            setTimeout(() => {
+                setSuccess(false);
+            }, 3000);
+
             resetForm();
         } catch (error) {
             setSuccess(false);
             setError('Error submitting form');
             console.error('Error submitting form:', error);
-        } finally {
-            setSubmitting(false);
         }
     };
 
@@ -54,7 +57,7 @@ const SignForm = () => {
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
-                {({ isSubmitting }) => (
+                {({ isSubmitting, isValid, dirty }) => (
                     <Form className="sign-form__form">
                         <div className="sign-form__group">
                             <label htmlFor="login" className="sign-form__label">Login</label>
@@ -85,7 +88,7 @@ const SignForm = () => {
                         <button
                             type="submit"
                             className="sign-form__button"
-                            disabled={isSubmitting}
+                            disabled={isSubmitting || !(isValid && dirty)}
                         >
                             {isSubmitting ? 'Submitting...' : 'Sign In'}
                         </button>
