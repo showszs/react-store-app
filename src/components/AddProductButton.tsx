@@ -30,7 +30,7 @@ const AddProductButton = () => {
 
     return (
         <>
-            <button onClick={handleOpenModal}>Add Product Button</button>
+            <button className="add-product-btn" onClick={handleOpenModal}>+ Add Product</button>
             {showModal &&
                 <Modal onClose={handleCloseModal} title="Add New Product">
                     {error && <div>{error}</div>}

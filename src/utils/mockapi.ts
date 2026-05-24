@@ -5,8 +5,8 @@ export const API_ITEMS_PER_PAGE_LIMIT = 12;
 export function generateMockProducts(
   page: string | number,
   name: string,
-  sort: string,
-  order: string,
+  sort?: string,
+  order?: string,
 ): string {
   const urlObject = new URL(API_URL);
   urlObject.searchParams.append('page', `${page}`);

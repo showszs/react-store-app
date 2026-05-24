@@ -15,18 +15,17 @@ const Products = () => {
 
   return (
     <div>
-      <h1>Products</h1>
-
-      <div className='products-filter'>
-        <input
-          type="text"
-          placeholder="Search by name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+      <div className='products-header'>
+        <div className='products-filter'>
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <AddProductButton />
       </div>
-
-      <AddProductButton />
 
       {isLoading && <Loading />}
       {error && <p className='error'>{error}</p>}
