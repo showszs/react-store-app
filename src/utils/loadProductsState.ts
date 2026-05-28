@@ -4,5 +4,5 @@ export const loadProductsState = () => {
     return JSON.parse(savedState);
   }
 
-  return { page: 1, name: '', sort: '', reload: '' };
+  return { page: 1, name: '', sort: '', order: '', reload: '' };
 };

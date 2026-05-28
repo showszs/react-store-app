@@ -1,7 +1,4 @@
-export const debounce = <T extends unknown[], U extends (...args: T) => void>(
-  func: U,
-  delay: number,
-) => {
+export const debounce = <T extends unknown[]>(func: (...args: T) => void, delay: number) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
   return (...args: T): void => {

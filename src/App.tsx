@@ -4,7 +4,7 @@ import Posts from './pages/Posts';
 import Products from './pages/Products';
 import Users from './pages/Users';
 import Todos from './pages/Todos';
-import SignForm from './pages/SignForm';
+import SignForm from './components/forms/SignForm';
 import NotFound from './pages/NotFound';
 
 const App = () => {

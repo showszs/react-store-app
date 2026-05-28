@@ -2,7 +2,9 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import type { ProductInterface } from '../../types/Product.interface';
 import { useDelete } from '../../hooks/useDelete';
 import { API_URL } from '../../utils/mockapi';
-import EditProductButton from '../EditProductButton';
+import EditProduct from './EditProduct';
+import { useSelector } from 'react-redux';
+import { selectIsLogged } from '../../redux/slices/authSlice';
 
 interface ProductProps {
     product: ProductInterface;
@@ -10,6 +12,7 @@ interface ProductProps {
 }
 
 const Product = ({ product: { name, image, category, description, price, id }, reload }: ProductProps) => {
+    const isLogged = useSelector(selectIsLogged)
     const { delete: deleteProduct } = useDelete(API_URL);
 
     const handleDeleteProduct = async () => {
@@ -34,14 +37,16 @@ const Product = ({ product: { name, image, category, description, price, id }, r
                     <div className="product-price">${price.toFixed(2)}</div>
                 </div>
             </div>
-            <div className="product-actions">
-                <button className="product-item__delete" onClick={handleDeleteProduct}>
-                    <FaTrash />
-                </button>
-                <EditProductButton product={{ id, name, image, category, description, price }} reload={reload}>
-                    <FaEdit />
-                </EditProductButton>
-            </div>
+            {isLogged && (
+                <div className="product-actions">
+                    <button className="product-item__delete" onClick={handleDeleteProduct}>
+                        <FaTrash />
+                    </button>
+                    <EditProduct product={{ id, name, image, category, description, price }} reload={reload}>
+                        <FaEdit />
+                    </EditProduct>
+                </div>
+            )}
         </li>
     )
 };

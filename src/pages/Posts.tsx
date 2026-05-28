@@ -1,9 +1,19 @@
+import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../components/ui/Loading';
-import { useFetch } from '../hooks/useFetch';
-import type { PostInterface } from '../types/Post.interface';
+import { fetchAllPosts, selectPosts, selectPostsError, selectPostsLoading } from '../redux/slices/postsSlice';
+import type { AppDispatch } from '../redux/store';
+import { useEffect } from 'react';
 
 const Posts = () => {
-  const { data: posts, error, isLoading } = useFetch<PostInterface>('https://jsonplaceholder.typicode.com/posts', 4);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const posts = useSelector(selectPosts);
+  const isLoading = useSelector(selectPostsLoading);
+  const error = useSelector(selectPostsError);
+
+  useEffect(() => {
+    dispatch(fetchAllPosts('https://jsonplaceholder.typicode.com/posts'));
+  }, [dispatch]);
 
   return (
     <div>

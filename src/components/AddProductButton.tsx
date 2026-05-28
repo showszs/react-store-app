@@ -1,13 +1,13 @@
 import { useState } from "react"
 import Modal from "../modals/Modal"
-import ProductForm from "./ProductForm"
+import ProductForm from "./forms/ProductForm"
 import type { ProductInterface } from "../types/Product.interface"
 import { useAdd } from "../hooks/useAdd"
 import { API_URL } from "../utils/mockapi"
 import { INITIAL_PRODUCT } from "../data/mockData"
 
 const AddProductButton = () => {
-    const { add, error } = useAdd(API_URL)
+    const { add } = useAdd(API_URL)
     const [showModal, setShowModal] = useState(false)
 
     const handleOpenModal = () => {
@@ -33,7 +33,6 @@ const AddProductButton = () => {
             <button className="add-product-btn" onClick={handleOpenModal}>+ Add Product</button>
             {showModal &&
                 <Modal onClose={handleCloseModal} title="Add New Product">
-                    {error && <div>{error}</div>}
                     <ProductForm onSubmit={handleSubmit} product={INITIAL_PRODUCT} />
                 </Modal>
             }

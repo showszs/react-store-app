@@ -9,8 +9,10 @@ export function generateMockProducts(
   order?: string,
 ): string {
   const urlObject = new URL(API_URL);
+
   urlObject.searchParams.append('page', `${page}`);
   urlObject.searchParams.append('limit', `${API_ITEMS_PER_PAGE_LIMIT}`);
+
   if (name) {
     urlObject.searchParams.append('name', name);
   }

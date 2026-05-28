@@ -1,11 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { number, object, string } from "yup";
-import { PRODUCT_CATEGORIES } from "../data/mockData";
-import type { ProductInterface } from "../types/Product.interface";
+import type { ProductInterface } from "../../types/Product.interface";
+import { PRODUCT_CATEGORIES } from "../../data/mockData";
+
 
 interface ProductFormProps {
     onSubmit: (product: ProductInterface) => void
     product: ProductInterface
+    onClose: () => void
 }
 
 const validationSchema = object({
@@ -31,7 +33,7 @@ const validationSchema = object({
 });
 
 
-const ProductForm = ({ onSubmit, product }: ProductFormProps) => {
+const ProductForm = ({ onSubmit, product, onClose }: ProductFormProps) => {
     const initialFormValues: ProductInterface = {
         id: product.id,
         name: product.name,
@@ -44,6 +46,7 @@ const ProductForm = ({ onSubmit, product }: ProductFormProps) => {
         onSubmit({
             ...values
         })
+        onClose()
     }
 
     return (
