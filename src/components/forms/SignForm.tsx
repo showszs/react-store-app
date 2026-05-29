@@ -179,7 +179,7 @@ const SignForm = () => {
                             {isLoginMode ? (
                                 <p>Don't have an account? <button type="button" className={styles.link} onClick={() => toggleMode('signup')}>Sign Up</button></p>
                             ) : (
-                                <p>Already have an account? <button type="button" className={styles.link} onClick={() => toggleMode('login')}>Login</button></p>
+                                <p>Already have an account? <button type="button" className={styles.link} onClick={() => toggleMode('login')}>Log In</button></p>
                             )}
                         </div>
                     </Form>

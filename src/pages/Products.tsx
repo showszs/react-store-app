@@ -60,7 +60,7 @@ const Products = () => {
         <ul className={styles.list}>
           {products.length > 0 ? products.map((product) => (
             <Product key={product.id} product={product} reload={() => setReload(product.id)} />
-          )) : <p className={styles.empty}>No products found.</p>}
+          )) : !isLoading && <p className={styles.empty}>No products found.</p>}
         </ul>
       </div>
     </div>

@@ -5,6 +5,7 @@ import Products from './pages/Products';
 import Users from './pages/Users';
 import SignForm from './components/forms/SignForm';
 import NotFound from './pages/NotFound';
+import Footer from './components/ui/Footer';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };
