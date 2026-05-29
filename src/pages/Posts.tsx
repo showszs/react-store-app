@@ -22,7 +22,7 @@ const Posts = () => {
       {error && <p className='error'>{error}</p>}
       <ul>
         {!!posts.length && posts.map((post) => (
-          <li key={post.id}>
+          <li key={post.id} className='post-item'>
             <strong>{post.title}</strong>
             <p>{post.body}</p>
           </li>
