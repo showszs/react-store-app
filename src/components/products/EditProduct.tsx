@@ -5,6 +5,7 @@ import type { ProductInterface } from "../../types/Product.interface"
 import useModal from "../../hooks/useModal"
 import useProductsForm from "../../hooks/useProductsForm"
 import ProductModalWrapper from "../modal/ProductModalWrapper"
+import styles from '../products/Product.module.css';
 
 interface EditProductProps {
     product: ProductInterface
@@ -30,7 +31,7 @@ const EditProduct = ({ product, reload, children }: EditProductProps) => {
             onClose={handleClose}
             error={error}
             showModal={showModal}>
-            <button className="product-item__edit" onClick={handleOpen}>{children}</button>
+            <button className={styles.edit} onClick={handleOpen}>{children}</button>
         </ProductModalWrapper >
     )
 }

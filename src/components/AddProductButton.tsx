@@ -6,7 +6,11 @@ import { useAdd } from "../hooks/useAdd"
 import { API_URL } from "../utils/mockapi"
 import { INITIAL_PRODUCT } from "../data/mockData"
 
-const AddProductButton = () => {
+interface AddProductButtonProps {
+    className?: string
+}
+
+const AddProductButton = ({ className = "" }: AddProductButtonProps) => {
     const { add } = useAdd(API_URL)
     const [showModal, setShowModal] = useState(false)
 
@@ -30,10 +34,10 @@ const AddProductButton = () => {
 
     return (
         <>
-            <button className="add-product-btn" onClick={handleOpenModal}>+ Add Product</button>
+            <button className={className || "add-product-btn"} onClick={handleOpenModal}>+ Add Product</button>
             {showModal &&
                 <Modal onClose={handleCloseModal} title="Add New Product">
-                    <ProductForm onSubmit={handleSubmit} product={INITIAL_PRODUCT} />
+                    <ProductForm onSubmit={handleSubmit} product={INITIAL_PRODUCT} onClose={handleCloseModal} />
                 </Modal>
             }
         </>

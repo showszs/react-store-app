@@ -1,0 +1,325 @@
+/* Header with filter and add button */
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: slideUp 0.5s ease-out;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.filter {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e8e4df;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Outfit', sans-serif;
+  color: #5a5350;
+  background-color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .filter {
+    width: 100%;
+  }
+  .filter input {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter {
+    width: 100%;
+  }
+
+  .filter input {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+}
+
+.filter input::placeholder {
+  color: #c0bbb6;
+}
+
+.filter input:hover {
+  border-color: #d4cfc9;
+  background-color: #fdfbf8;
+}
+
+.filter input:focus {
+  outline: none;
+  border-color: #5a5350;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(90, 83, 80, 0.1);
+}
+
+.addButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #5a5350 0%, #3d3a38 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.2);
+  white-space: nowrap;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .addButton {
+    width: 50%;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addButton {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+.addButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(90, 83, 80, 0.3);
+}
+
+.addButton:hover::before {
+  left: 100%;
+}
+
+@media (max-width: 480px) {
+  .addButton:hover {
+    transform: none;
+  }
+}
+
+.addButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(90, 83, 80, 0.15);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@media (max-width: 1440px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0 2rem 0;
+  animation: slideUp 0.5s ease-out;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .pagination {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: 1rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 0.75rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+}
+
+.paginationButton {
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #5a5350 0%, #3d3a38 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .paginationButton {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationButton {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
+.paginationButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.paginationButton:hover:not(:disabled)::before {
+  width: 300px;
+  height: 300px;
+}
+
+.paginationButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(90, 83, 80, 0.3);
+}
+
+@media (max-width: 480px) {
+  .paginationButton:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+.paginationButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 0 2px 6px rgba(90, 83, 80, 0.1);
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: #a89e99;
+  font-size: 1.1rem;
+}

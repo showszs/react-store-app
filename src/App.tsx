@@ -3,7 +3,6 @@ import Navbar from './components/ui/Navbar';
 import Posts from './pages/Posts';
 import Products from './pages/Products';
 import Users from './pages/Users';
-import Todos from './pages/Todos';
 import SignForm from './components/forms/SignForm';
 import NotFound from './pages/NotFound';
 
@@ -17,8 +16,7 @@ const App = () => {
           <Route path="/posts" element={<Posts />} />
           <Route path="/products" element={<Products />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/todos" element={<Todos />} />
-          <Route path="/sign" element={<SignForm />} />
+          <Route path="/login" element={<SignForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

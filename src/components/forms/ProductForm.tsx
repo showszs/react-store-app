@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import { number, object, string } from "yup";
 import type { ProductInterface } from "../../types/Product.interface";
 import { PRODUCT_CATEGORIES } from "../../data/mockData";
+import styles from './ProductForm.module.css';
 
 
 interface ProductFormProps {
@@ -50,32 +51,32 @@ const ProductForm = ({ onSubmit, product, onClose }: ProductFormProps) => {
     }
 
     return (
-        <div className="product-form">
+        <div className={styles.form}>
             <Formik
                 initialValues={initialFormValues}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
             >
                 {({ isSubmitting, isValid }) => (
-                    <Form className="product-form__form">
-                        <div className="product-form__group">
-                            <label htmlFor="name">Name</label>
-                            <Field type="text" name="name" id="name" />
-                            <ErrorMessage name="name" component="div" className="error" />
+                    <Form className={styles.formContent}>
+                        <div className={styles.group}>
+                            <label htmlFor="name" className={styles.label}>Name</label>
+                            <Field type="text" name="name" id="name" className={styles.input} />
+                            <ErrorMessage name="name" component="div" className={styles.error} />
                         </div>
-                        <div className="product-form__group">
-                            <label htmlFor="description">Description</label>
-                            <Field as="textarea" name="description" id="description" />
-                            <ErrorMessage name="description" component="div" className="error" />
+                        <div className={styles.group}>
+                            <label htmlFor="description" className={styles.label}>Description</label>
+                            <Field as="textarea" name="description" id="description" className={styles.input} />
+                            <ErrorMessage name="description" component="div" className={styles.error} />
                         </div>
-                        <div className="product-form__group">
-                            <label htmlFor="price">Price</label>
-                            <Field type="number" name="price" id="price" />
-                            <ErrorMessage name="price" component="div" className="error" />
+                        <div className={styles.group}>
+                            <label htmlFor="price" className={styles.label}>Price</label>
+                            <Field type="number" name="price" id="price" className={styles.input} />
+                            <ErrorMessage name="price" component="div" className={styles.error} />
                         </div>
-                        <div className="product-form__group">
-                            <label htmlFor="category">Category</label>
-                            <Field as="select" name="category" id="category">
+                        <div className={styles.group}>
+                            <label htmlFor="category" className={styles.label}>Category</label>
+                            <Field as="select" name="category" id="category" className={styles.select}>
                                 <option value="">Select a category</option>
                                 {PRODUCT_CATEGORIES.map((category) => (
                                     <option key={category} value={category}>
@@ -83,9 +84,9 @@ const ProductForm = ({ onSubmit, product, onClose }: ProductFormProps) => {
                                     </option>
                                 ))}
                             </Field>
-                            <ErrorMessage name="category" component="div" className="error" />
+                            <ErrorMessage name="category" component="div" className={styles.error} />
                         </div>
-                        <button type="submit" disabled={isSubmitting || !isValid} >
+                        <button type="submit" className={styles.submit} disabled={isSubmitting || !isValid} >
                             Submit
                         </button>
                     </Form>

@@ -5,6 +5,7 @@ import { API_URL } from '../../utils/mockapi';
 import EditProduct from './EditProduct';
 import { useSelector } from 'react-redux';
 import { selectIsLogged } from '../../redux/slices/authSlice';
+import styles from './Product.module.css';
 
 interface ProductProps {
     product: ProductInterface;
@@ -25,21 +26,21 @@ const Product = ({ product: { name, image, category, description, price, id }, r
     }
 
     return (
-        <li className="product-card">
-            <div className="product-image">
+        <li className={styles.card}>
+            <div className={styles.image}>
                 <img src={image} alt={name} />
             </div>
-            <div className="product-content">
-                <h3 className="product-title">{name}</h3>
-                <p className="product-category">{category}</p>
-                <p className="product-description">{description}</p>
-                <div className="product-footer">
-                    <div className="product-price">${price.toFixed(2)}</div>
+            <div className={styles.content}>
+                <h3 className={styles.title}>{name}</h3>
+                <p className={styles.category}>{category}</p>
+                <p className={styles.description}>{description}</p>
+                <div className={styles.footer}>
+                    <div className={styles.price}>${price.toFixed(2)}</div>
                 </div>
             </div>
             {isLogged && (
-                <div className="product-actions">
-                    <button className="product-item__delete" onClick={handleDeleteProduct}>
+                <div className={styles.actions}>
+                    <button className={styles.delete} onClick={handleDeleteProduct}>
                         <FaTrash />
                     </button>
                     <EditProduct product={{ id, name, image, category, description, price }} reload={reload}>
