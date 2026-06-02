@@ -1,0 +1,161 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.pagesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pageItem {
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1.5px solid #e8e4df;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #5a5350;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.pageLink:hover {
+  border-color: #5a5350;
+  background: #f5f1ed;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.12);
+}
+
+.pageLink:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.pageLink.active {
+  background: #5a5350;
+  border-color: #5a5350;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.25);
+  cursor: default;
+  pointer-events: none;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #a09a97;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border: 1.5px solid #e8e4df;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #5a5350;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: #5a5350;
+  background: #f5f1ed;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(90, 83, 80, 0.12);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: #f0ede8;
+  border-color: #ddd9d4;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .pageLink,
+  .dots {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .pagesList {
+    gap: 0.35rem;
+  }
+
+  .pageLink,
+  .dots {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .controls {
+    width: 100%;
+    gap: 0.75rem;
+  }
+}

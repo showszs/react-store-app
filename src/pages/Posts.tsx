@@ -3,6 +3,7 @@ import Loading from '../components/ui/Loading';
 import { fetchAllPosts, selectPosts, selectPostsError, selectPostsLoading } from '../redux/slices/postsSlice';
 import type { AppDispatch } from '../redux/store';
 import { useEffect } from 'react';
+import styles from './Posts.module.css';
 
 const Posts = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,14 +21,14 @@ const Posts = () => {
       <h1>Posts</h1>
       {isLoading && <Loading />}
       {error && <p className='error'>{error}</p>}
-      <ul>
+      <div className={styles.container}>
         {!!posts.length && posts.map((post) => (
-          <li key={post.id} className='post-item'>
+          <div key={post.id} className={styles.item}>
             <strong>{post.title}</strong>
             <p>{post.body}</p>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

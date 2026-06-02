@@ -10,23 +10,15 @@
   animation: slideDown 0.5s ease-out;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    padding: 1rem 0;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0.75rem 0;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #e8e4df;
-  }
-}
-
 .navbarContainer {
   display: flex;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
 }
 
 .list {
@@ -36,26 +28,6 @@
   display: flex;
   gap: 3rem;
   width: 100%;
-}
-
-@media (max-width: 1024px) {
-  .list {
-    gap: 2.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .list {
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .list {
-    gap: 1rem;
-    justify-content: space-between;
-  }
 }
 
 .item {
@@ -78,22 +50,6 @@
   display: block;
   padding: 0.5rem 0;
   position: relative;
-}
-
-@media (max-width: 768px) {
-  .item a {
-    font-size: 0.95rem;
-  }
-  .itemRight {
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .item a {
-    font-size: 0.85rem;
-    padding: 0.4rem 0;
-  }
 }
 
 .item a::after {
@@ -125,24 +81,6 @@
   width: 100%;
   height: 3px;
   background: linear-gradient(90deg, #5a5350, #3d3a38);
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.navContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
 }
 
 .burger {
@@ -178,14 +116,32 @@
   transform: rotate(-45deg);
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .list {
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
-  .burger {
-    display: flex;
+  .navbar {
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
   }
 
   .list {
     position: absolute;
-    top: 60px;
+    top: 35px;
     left: 0;
     right: 0;
     background-color: #ffffff;
@@ -194,7 +150,6 @@
     padding: 2rem 0;
     gap: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
     transform: translateY(-150%);
     opacity: 0;
     transition: all 0.3s ease-in-out;
@@ -204,5 +159,35 @@
   .list.open {
     transform: translateY(0);
     opacity: 1;
+  }
+
+  .itemRight {
+    margin-left: 0;
+  }
+
+  .item a {
+    font-size: 0.95rem;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem 1;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e8e4df;
+  }
+
+  .list {
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .item a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0;
   }
 }
