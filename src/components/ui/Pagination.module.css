@@ -143,19 +143,19 @@
 
   .pageLink,
   .dots {
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 28px;
     font-size: 0.8rem;
   }
 
   .btn {
     flex: 1;
-    padding: 0.6rem 1rem;
+    padding: 0.3rem 0.6rem;
     font-size: 0.85rem;
   }
 
   .controls {
-    width: 100%;
+    width: 90%;
     gap: 0.75rem;
   }
 }
