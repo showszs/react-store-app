@@ -58,7 +58,7 @@ const SignForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLogged) navigate('/products');
+        if (isLogged) navigate('/');
     }, [isLogged, navigate]);
 
     const handleSubmit = async (
@@ -73,7 +73,7 @@ const SignForm = () => {
                 ? { login: values.login, password: values.password }
                 : { login: values.login, email: values.email, password: values.password };
 
-            await axios.post("https://67a9037f6e9548e44fc2acf8.mockapi.io/products", payload);
+            await axios.post("https://67a9037f6e9548e44fc2acf8.mockapi.io/users", payload);
 
             dispatch(login());
             setSuccess(true);

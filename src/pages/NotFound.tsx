@@ -10,11 +10,6 @@ const NotFound = () => {
         <p className={styles.description}>
           Unfortunately, the page you are looking for does not exist. It may have been removed or the address is incorrect.
         </p>
-        <div className={styles.decoration}>
-          <span className={styles.decorationItem}>🔍</span>
-          <span className={styles.decorationItem}>📄</span>
-          <span className={styles.decorationItem}>⚡</span>
-        </div>
         <Link to="/" className={styles.button}>
           Go Back
         </Link>

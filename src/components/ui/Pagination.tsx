@@ -13,11 +13,6 @@ const Pagination = ({ page, setPage }: PaginationProps) => {
     const totalCount = useSelector(selectTotalProductsCount)
     const products = useSelector(selectProducts);
     const totalPages = Math.ceil(totalCount / API_ITEMS_PER_PAGE_LIMIT)
-    const pagesPagination = []
-    for (let i = 1; i <= totalPages; i++) {
-        pagesPagination.push(i)
-    }
-
     const pageNumbers = getPageNumbers(totalPages, page)
 
     return (
@@ -28,7 +23,7 @@ const Pagination = ({ page, setPage }: PaginationProps) => {
                     disabled={page === 1}
                     onClick={() => setPage((prev) => prev - 1)}
                 >
-                    Previous
+                    &#60;Previous
                 </button>
 
                 <ul className={styles.pagesList}>
@@ -55,7 +50,7 @@ const Pagination = ({ page, setPage }: PaginationProps) => {
                     disabled={products.length < API_ITEMS_PER_PAGE_LIMIT}
                     onClick={() => setPage((prev) => prev + 1)}
                 >
-                    Next
+                    Next&#62;
                 </button>
             </div>
         </div>

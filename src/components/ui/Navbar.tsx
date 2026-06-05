@@ -44,7 +44,7 @@ const Navbar = () => {
           </li>
           <li className={`${styles.item} ${styles.itemRight}`}>
             {isLogged
-              ? <NavLink to="/products" onClick={handleLogout}>Log Out</NavLink>
+              ? <NavLink to="/" onClick={handleLogout}>Log Out</NavLink>
               : <NavLink to="/login" onClick={closeMenu}>Log In</NavLink>
             }
           </li>
