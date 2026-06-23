@@ -108,7 +108,7 @@ Run ESLint to check code quality:
 npm run lint
 ```
 
-## 🔑 Key Components
+##  Key Components
 
 ### Pages
 
