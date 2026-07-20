@@ -83,7 +83,6 @@ Start the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
 
 ### Production Build
 
@@ -109,14 +108,14 @@ Run ESLint to check code quality:
 npm run lint
 ```
 
-## 🔑 Key Components
+##  Key Components
 
 ### Pages
 
 - **Products Page**: Displays product catalog with filtering and management capabilities
 - **Posts Page**: Shows blog posts and content articles
-- **Users Page**: Displays user information and management
-- **Login Page**: Authentication form with validation
+- **Users Page**: Displays user information 
+- **Login Page**: Authentication form with validation (Mock Authentication)
 - **NotFound Page**: 404 error handling
 
 ### Components
@@ -186,13 +185,4 @@ The application uses React Router v7 for client-side routing:
 
 The application supports all modern browsers with ES2020+ support.
 
-## Development
 
-When developing new features:
-
-1. Create new components in the appropriate `src/components/` subdirectory
-2. Use TypeScript for type safety
-3. Add Redux slices in `src/redux/slices/` for state management
-4. Create page components in `src/pages/`
-5. Use CSS modules for styling
-6. Follow the existing code structure and patterns
