@@ -73,16 +73,26 @@ const SignForm = () => {
                 ? { login: values.login, password: values.password }
                 : { login: values.login, email: values.email, password: values.password };
 
-            await axios.post("https://67a9037f6e9548e44fc2acf8.mockapi.io/users", payload);
+            if (mode === 'login') {
+                const response = await axios.post("http://localhost:3000/login", payload, { withCredentials: true });
+                console.log(response.data.message);
+
+            } else {
+                const response = await axios.post("http://localhost:3000/registration", payload, { withCredentials: true });
+                console.log(response.data.message);
+            }
 
             dispatch(login());
             setSuccess(true);
             setTimeout(() => setSuccess(false), 3000);
             resetForm();
-        } catch (error) {
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setError(err.response?.data?.message || 'An error occurred');
+            } else {
+                setError('An unexpected error occurred');
+            }
             setSuccess(false);
-            setError('Error submitting form');
-            console.error('Error submitting form:', error);
         }
     };
 
@@ -107,6 +117,7 @@ const SignForm = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
+
             >
                 {({ isSubmitting, isValid, dirty }) => (
                     <Form className={styles.formContent}>

@@ -6,8 +6,21 @@ import Users from './pages/Users';
 import SignForm from './components/forms/SignForm';
 import NotFound from './pages/NotFound';
 import Footer from './components/ui/Footer';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from './redux/store';
+import { checkAuth } from './redux/slices/authSlice';
+
 
 const App = () => {
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
+
+
   return (
     <BrowserRouter>
       <Navbar />

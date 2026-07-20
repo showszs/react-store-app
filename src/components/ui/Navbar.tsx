@@ -4,6 +4,7 @@ import { NavLink } from 'react-router'; // если используете v6, �
 import { logout, selectIsLogged } from '../../redux/slices/authSlice';
 import type { AppDispatch } from '../../redux/store';
 import styles from './Navbar.module.css';
+import axios from 'axios';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,10 +12,17 @@ const Navbar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isLogged = useSelector(selectIsLogged);
 
-  const handleLogout = () => {
-    dispatch(logout());
-    setIsOpen(false);
-  };
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
+      console.log(response.data.message);
+
+      dispatch(logout());
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  }
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);

@@ -1,13 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import type { RootState } from '../store';
 
 export interface AuthStateInterface {
   isLogged: boolean;
+  isCheckingAuth: boolean;
 }
 
 const initialState: AuthStateInterface = {
   isLogged: false,
+  isCheckingAuth: false,
 };
+
+export const checkAuth = createAsyncThunk('auth/checkAuth', async (_, { rejectWithValue }) => {
+  try {
+    await axios.get('http://localhost:3000/me', { withCredentials: true });
+  } catch (err) {
+    return rejectWithValue(`Not authenticated: ${err}`);
+  }
+});
 
 const authSlice = createSlice({
   name: 'auth',
@@ -19,6 +30,20 @@ const authSlice = createSlice({
     logout(state) {
       state.isLogged = false;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(checkAuth.pending, (state) => {
+        state.isCheckingAuth = true;
+      })
+      .addCase(checkAuth.fulfilled, (state) => {
+        state.isLogged = true;
+        state.isCheckingAuth = false;
+      })
+      .addCase(checkAuth.rejected, (state) => {
+        state.isLogged = false;
+        state.isCheckingAuth = false;
+      });
   },
 });
 
