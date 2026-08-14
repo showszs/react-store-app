@@ -24,7 +24,6 @@ export function createFetchThunk<T>(typePrefix: string) {
         if (axiosError.response?.status === 404) {
           return { data: [], totalCount: 0 };
         }
-        console.error(axiosError.message);
         return rejectWithValue(axiosError.message || 'An unknown error occurred');
       }
     },

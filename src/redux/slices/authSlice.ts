@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../store';
+import { apiUrl } from '../../api';
 
 export interface AuthStateInterface {
   isLogged: boolean;
@@ -14,7 +15,7 @@ const initialState: AuthStateInterface = {
 
 export const checkAuth = createAsyncThunk('auth/checkAuth', async (_, { rejectWithValue }) => {
   try {
-    await axios.get('http://localhost:3000/me', { withCredentials: true });
+    await axios.get(`${apiUrl}/me`, { withCredentials: true });
   } catch (err) {
     return rejectWithValue(`Not authenticated: ${err}`);
   }

@@ -38,6 +38,36 @@
   left: 100%;
 }
 
+.actions {
+  display: flex;
+  padding: 1rem 0.1rem;
+  border-top: 1px solid #e8e4df;
+  justify-content: flex-start;
+}
+
+.delete,
+.edit {
+  padding: 0.6rem 0.8rem;
+  background-color: rgb(201, 93, 84);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 117, 109, 0.3);
+  background: linear-gradient(135deg, #e08177 0%, #d4756d 100%);
+}
+
 .avatar {
   display: flex;
   align-items: center;
@@ -57,7 +87,7 @@
   margin-bottom: 1rem;
 }
 
-.name {
+.login {
   margin: 0 0 0.5rem;
   color: #3d3a38;
   font-size: 1.2rem;
@@ -137,7 +167,7 @@
     font-size: 1.75rem;
   }
 
-  .name {
+  .login {
     font-size: 1.1rem;
   }
 

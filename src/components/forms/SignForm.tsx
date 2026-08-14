@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../../redux/store';
 import { login, selectIsLogged } from '../../redux/slices/authSlice';
 import { useNavigate } from 'react-router';
+import { apiUrl } from '../../api';
 
 interface SignFormValues {
     login: string;
@@ -74,12 +75,10 @@ const SignForm = () => {
                 : { login: values.login, email: values.email, password: values.password };
 
             if (mode === 'login') {
-                const response = await axios.post("http://localhost:3000/login", payload, { withCredentials: true });
-                console.log(response.data.message);
+                await axios.post(`${apiUrl}/login`, payload, { withCredentials: true });
 
             } else {
-                const response = await axios.post("http://localhost:3000/registration", payload, { withCredentials: true });
-                console.log(response.data.message);
+                await axios.post(`${apiUrl}/registration`, payload, { withCredentials: true });
             }
 
             dispatch(login());
@@ -88,7 +87,7 @@ const SignForm = () => {
             resetForm();
         } catch (err) {
             if (axios.isAxiosError(err)) {
-                setError(err.response?.data?.message || 'An error occurred');
+                setError(err.response?.data?.message || 'User not found');
             } else {
                 setError('An unexpected error occurred');
             }

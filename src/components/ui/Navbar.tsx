@@ -47,9 +47,9 @@ const Navbar = () => {
           <li className={styles.item}>
             <NavLink to="/posts" onClick={closeMenu}>Posts</NavLink>
           </li>
-          <li className={styles.item}>
+          {isLogged && <li className={styles.item}>
             <NavLink to="/users" onClick={closeMenu}>Users</NavLink>
-          </li>
+          </li>}
           <li className={`${styles.item} ${styles.itemRight}`}>
             {isLogged
               ? <NavLink to="/" onClick={handleLogout}>Log Out</NavLink>

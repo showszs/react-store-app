@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
+import { FaTrash } from 'react-icons/fa';
 import Loading from '../components/ui/Loading';
 import { fetchAllUsers, selectUsers, selectUserError, selectUserLoading } from '../redux/slices/usersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch } from '../redux/store';
 import styles from './Users.module.css';
+import axios from 'axios';
+import { apiUrl } from '../api';
 
 const Users = () => {
 
@@ -14,16 +17,16 @@ const Users = () => {
   const error = useSelector(selectUserError);
 
   useEffect(() => {
-    dispatch(fetchAllUsers('https://jsonplaceholder.typicode.com/users'));
+    dispatch(fetchAllUsers(`${apiUrl}/profiles`));
   }, [dispatch]);
 
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
+  const handleDelete = async (id: string) => {
+    try {
+      await axios.delete(`${apiUrl}/profiles/${id}`);
+      dispatch(fetchAllUsers(`${apiUrl}/profiles`));
+    } catch (err) {
+      console.error('Failed to delete user:', err);
+    }
   };
 
   return (
@@ -33,27 +36,32 @@ const Users = () => {
       {error && <p className='error'>{error}</p>}
       <div className={styles.container}>
         {!!users.length && users.map((user) => (
-          <div key={user.id} className={styles.card}>
-            <div className={styles.avatar}>{getInitials(user.name)}</div>
+          <div key={user._id} className={styles.card}>
+            <div className={styles.avatar}></div>
             <div className={styles.header}>
-              <h3 className={styles.name}>{user.name}</h3>
+              <h3 className={styles.login}>{user.login}</h3>
               <p className={styles.email}>{user.email}</p>
             </div>
             <div className={styles.info}>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Phone</span>
-                <span className={styles.infoValue}>{user.phone}</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Company</span>
               </div>
               <div className={styles.infoItem}>
                 <span className={styles.infoLabel}>Website</span>
-                <span className={styles.infoValue}>{user.website}</span>
               </div>
+            </div>
+            <div className={styles.actions}>
+              <button className={styles.delete} onClick={() => handleDelete(user._id)}>
+                <FaTrash />
+              </button>
             </div>
           </div>
         ))}
+
+        {!users.length && <h2>No users found</h2>}
       </div>
     </div>
   );
