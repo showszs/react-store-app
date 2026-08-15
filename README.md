@@ -1,6 +1,6 @@
 # React Store App
 
-A modern, full-featured e-commerce and content management application built with React, TypeScript, and Vite. This application provides a comprehensive platform for browsing products, managing user accounts, and viewing content with server integration.
+A modern, full-featured  and content management application built with React, TypeScript, and Vite. This application provides a comprehensive platform for browsing products, managing user accounts, and viewing content with server integration.
 
 ## Features
 
